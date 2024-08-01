@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>year</title>
+    <link rel="stylesheet" href="/year.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>welcome to my calendar</h1>
+
+        <form action="/users/<%=founduser%>/year" method="POST">
+            <input type="text" placeholder="search year" name="year" id ="year">
+            <button type="submit">search</button>
+        </form>
+
+        <h2>year <%= year %></h2>
+    </header>
+
+
+    <div class="calendar-container">
+        <% for(let month = 0;month < calendar.length;month++) { %>
+
+        <div class="month-container" id="<%= months[month] %>">
+            <h3 style="text-align: center;"> <%= months[month] %> </h3>
+
+
+            <div class="day-of-week">
+                <span>Sun</span><span>Mon</span><span>Tue</span><span>
+                    Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <% for(let x = 0;x < calendar[month].length;x++) { %>
+            <div class="days">
+                <% for(let y = 0;y < calendar[month][x].length;y++) { %>
+                    <a href ="<%=year %>/<%= months[month] %>/<%= calendar[month][x][y]%>">
+                        <div class="date <%=calendar[month][x][y]!==""? "valid-date": ""%>">
+                            
+                            <div id="<%=calendar[month][x][y] %>">
+                                   
+                                     <%= calendar[month][x][y] %>
+                                   
+                                
+                            </div>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+
+        <% } %>
+    </div>
+
+</body>
+
+</html>

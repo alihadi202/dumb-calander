@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>event</title>
+</head>
+<body>
+  <h1>add event</h1>
+  <form action="<%=eventid%>?_method=PUT" method="POST">
+    <label for="label">label:</label>
+    <input type="text" name="label" id="label"/>
+    <label for="starttime">start time:</label>
+    <input type="time" name="starttime" id="starttime" required />
+    <label for="endtime">end time:</label>
+    <input type="time" name="endtime" id="endtime"  />
+    <label for="description">description:</label>
+    <input type="text" name="description" id="description"/>
+    <button type="submit">add</button>
+  </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

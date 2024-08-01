@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Timeline</title>
+    <link rel="stylesheet" href="/day.css">
+</head>
+
+<body>
+    <header>
+        <h1><%=year%>/<%= month %>/<%= day %></h1>
+       <a href="<%= day %>/event"> <button class="add-event-button">+</button></a>
+    </header>
+    <div class="timeline-container"style="">
+        <% for (let hour = 0; hour < 24; hour++) { %>
+            <div class="timeline-item" >
+                <span class="time-label"><%= hour==0?12:hour%12==0?12:hour%12;  %> : 00<%=hour<12?'AM':'PM'%></12> </span>
+                <div class="event-content">
+                    
+                    <% for(let i= 0 ;  i<list.length ; i++){%>
+                    <%if (list[i]==hour && E[i].year==year&&E[i].month==month && E[i].day==day){%>
+                        <a href="<%=day%>/<%=E[i]._id%>">
+                            <div class="event">
+                                <span class="event-label"><%= E[i].label %></span>
+                                <span class="event-description"><%= E[i].description %></span>
+                            </div>
+                        </a>
+                        
+                       <%}%>
+                    <%}%>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <a href="javascript:history.back()">Go Back</a>
+</body>
+
+</html>

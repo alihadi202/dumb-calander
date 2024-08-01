@@ -1,0 +1,85 @@
+/* Reset some basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.add-event-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #5d5d5e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure the button is above other content */
+}
+
+.add-event-button:hover {
+    background-color: hsl(0, 11%, 30%);
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.time-label {
+    flex: 0 0 100px;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-content {
+    flex: 1;
+    padding-left: 10px;
+}
+
+/* Optional: Add styles for events or additional content */
+.event-content p {
+    margin: 0;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #007bff;
+}
+
+.event {
+    background: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.event-label {
+    font-weight: bold;
+    color: white;
+}
+
+.event-description {
+    color: white;
+}
