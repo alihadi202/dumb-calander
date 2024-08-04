@@ -1,8 +1,11 @@
-leconst express = require('express');
+const express = require('express');
 const router = express.Router();
 const calendar = require("./calendar-config.js");
 const User = require('../models/user');
 // const MandD = require('../public/selector.js');
+
+
+
 router.post('/year', (req, res) => {
     const year = req.body.year || 2024;
     const months = ["January", "February", "March", "April", "May", "June", "July",
@@ -73,22 +76,61 @@ router.post('/:year/:month/:day/event', async (req, res) => {
       }
 });
 
-// router.put('/:year/:month/:day/:event', async (req, res) => {
-//     try {
-//       const currentUser = await User.findById(req.session.user._id);
-//       const EEE = currentUser.events.id(req.params.event);
-//       EEE.set(req.body);
-//       await currentUser.save();
-//       res.render("calander/event.ejs",{eventid :req.params.event});
-//     } catch (error) {
-//       console.log(error);
-//       res.redirect('/');
-//     }
-// });
+router.put('/:year/:month/:day/:event', async (req, res) => {
+    try {
+        const founduser = await User.findById(req.session.user._id);
+        const E = founduser.events;
+        let eve ={}
+        E.forEach(e =>{
+            if(e._id == req.params.event){
+                eve=e
+    
+        }})
+      eve.set(req.body);
 
-router.get('/:year/:month/:day/:event', (req, res) => {
-    const { year,month, day } = req.params;
-    res.render('calendar/edit.ejs', { year, month, day });
+      await founduser.save();
+      res.redirect(`../../../year`);
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
 });
+
+router.get('/:year/:month/:day/:event',async (req, res) => {
+    const { year,month, day , event } = req.params;
+    const founduser = await User.findById(req.session.user._id);
+    const E = founduser.events;
+    let eve ={}
+    E.forEach(e =>{
+        if(e._id == req.params.event){
+            eve=e
+
+    }})
+    console.log(eve);
+    
+    res.render('calendar/edit.ejs', { year, month, day , event , eve });
+});
+
+router.delete('/:year/:month/:day/:event', async (req, res) => {
+    try {
+        const founduser = await User.findById(req.session.user._id);
+        const E = founduser.events;
+        let eve ={}
+        E.forEach(e =>{
+            if(e._id == req.params.event){
+                eve=e
+    
+        }})
+      founduser.events.id(req.params.event).deleteOne();
+
+      await founduser.save();
+      res.redirect(`../../../year`);
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
+});
+
+
 
 module.exports = router;

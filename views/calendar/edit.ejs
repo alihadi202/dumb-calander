@@ -7,18 +7,21 @@
   <title>event</title>
 </head>
 <body>
-  <h1>add event</h1>
-  <form action="<%=eventid%>?_method=PUT" method="POST">
+  <h1>edit event</h1>
+  <form action="<%=event%>?_method=PUT" method="POST">
     <label for="label">label:</label>
-    <input type="text" name="label" id="label"/>
+    <input type="text" name="label" id="label" value="<%=eve.label%>" />
     <label for="starttime">start time:</label>
-    <input type="time" name="starttime" id="starttime" required />
+    <input type="time" name="starttime" id="starttime" value="<%=eve.starttime%>"  required />
     <label for="endtime">end time:</label>
-    <input type="time" name="endtime" id="endtime"  />
+    <input type="time" name="endtime" id="endtime" value="<%=eve.endtime%>"  />
     <label for="description">description:</label>
-    <input type="text" name="description" id="description"/>
+    <input type="text" name="description" id="description" value="<%=eve.description%>"/>
     <button type="submit">add</button>
   </form>
+  <form action="<%=event%>?_method=DELETE" method="POST">
+        <button type="submit">Delete this item</button>
+    </form>
 </body>
 </html>
 
