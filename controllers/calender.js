@@ -6,19 +6,14 @@ const User = require('../models/user');
 
 
 
-router.post('/year', (req, res) => {
-    const year = req.body.year || 2024;
-    const months = ["January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"];
-    const founduser = (req.session.user._id);
+// router.post('/year', (req, res) => {
+//     const year = req.body.year || 2024;
+//     const months = ["January", "February", "March", "April", "May", "June", "July",
+//     "August", "September", "October", "November", "December"];
+//     const founduser = (req.session.user._id);
    
-    res.render('calendar/year.ejs', 
-        {calendar: calendar(year),
-        months,
-        year,
-        founduser,
-    });
-});
+//     res.redirect(. , )
+// });
 
 router.get('/year', (req, res) => {
     const year = req.body.year || 2024;

@@ -3,42 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>event</title>
+  <link rel="stylesheet" href="/edit.css">
+  <title>Edit Event</title>
 </head>
 <body>
-  <h1>edit event</h1>
-  <form action="<%=event%>?_method=PUT" method="POST">
-    <label for="label">label:</label>
-    <input type="text" name="label" id="label" value="<%=eve.label%>" />
-    <label for="starttime">start time:</label>
-    <input type="time" name="starttime" id="starttime" value="<%=eve.starttime%>"  required />
-    <label for="endtime">end time:</label>
-    <input type="time" name="endtime" id="endtime" value="<%=eve.endtime%>"  />
-    <label for="description">description:</label>
-    <input type="text" name="description" id="description" value="<%=eve.description%>"/>
-    <button type="submit">add</button>
-  </form>
-  <form action="<%=event%>?_method=DELETE" method="POST">
-        <button type="submit">Delete this item</button>
+  <div class="container">
+    <h1>Edit Event</h1>
+    <form action="<%=event%>?_method=PUT" method="POST" class="event-form">
+      <label for="label">Label:</label>
+      <input type="text" name="label" id="label" value="<%=eve.label%>" required />
+      
+      <label for="starttime">Start Time:</label>
+      <input type="time" name="starttime" id="starttime" value="<%=eve.starttime%>" required />
+      
+      <label for="endtime">End Time:</label>
+      <input type="time" name="endtime" id="endtime" value="<%=eve.endtime%>" required />
+      
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="description" value="<%=eve.description%>" required />
+      
+      <button type="submit">Update</button>
     </form>
+    <form action="<%=event%>?_method=DELETE" method="POST" class="delete-form">
+      <button type="submit">Delete this item</button>
+    </form>
+  </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
