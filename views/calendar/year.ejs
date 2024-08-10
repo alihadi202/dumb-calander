@@ -9,11 +9,11 @@
 </head>
 
 <body>
+    <%- include('../partials/nav.ejs') %>
 
     <header>
-        <h1>welcome to my calendar</h1>
 
-        <form action="/users/<%=founduser%>/year" method="POST">
+        <form action="/users/<%=founduserid%>/year" method="POST">
             <input type="text" placeholder="search year" name="year" id ="year">
             <button type="submit">search</button>
         </form>
@@ -42,7 +42,11 @@
                             <div id="<%=calendar[month][x][y] %>">
                                    
                                      <%= calendar[month][x][y] %>
-                                   
+                                    <% E.forEach(e =>{ %>
+                                            <%if(e.year==year&&e.month==months[month] && e.day==calendar[month][x][y]){%>
+                                                <div>*</div>
+                                            <%}%>
+                                    <%});%>
                                 
                             </div>
                         </div>

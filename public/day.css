@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 header {
@@ -40,6 +41,7 @@ header {
     display: flex;
     flex-direction: column;
     margin: 20px;
+    background-color: white;
 }
 
 .timeline-item {
@@ -47,6 +49,7 @@ header {
     align-items: center;
     border-bottom: 1px solid #ddd;
     padding: 10px;
+    
 }
 
 .time-label {
@@ -61,23 +64,26 @@ header {
 }
 
 /* Optional: Add styles for events or additional content */
-.event-content p {
-    margin: 0;
-    padding: 5px;
-    background-color: #f9f9f9;
-    border-left: 3px solid #007bff;
-}
+
 
 .event {
     background: red;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 5px;
+    
+    
+   
+    
 }
 
 .event-label {
     font-weight: bold;
     color: white;
+}
+
+.event:hover{
+    background: rgb(147, 0, 0);
 }
 
 .event-description {

@@ -24,19 +24,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-app.post('/users/:userId/year', async (req, res) => {
-  const year = req.query.year || 2024;
-    const months = ["January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"];
-    const founduser = User.findById(req.session.user._id);
-    const E = founduser.events;
-    console.log(E);
-    res.render('calendar/year.ejs', 
-        {calendar: calendar(year),
-        months,
-        year,
-        E,})
-});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));

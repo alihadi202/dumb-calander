@@ -2,30 +2,46 @@ const express = require('express');
 const router = express.Router();
 const calendar = require("./calendar-config.js");
 const User = require('../models/user');
-// const MandD = require('../public/selector.js');
 
 
 
-// router.post('/year', (req, res) => {
-//     const year = req.body.year || 2024;
-//     const months = ["January", "February", "March", "April", "May", "June", "July",
-//     "August", "September", "October", "November", "December"];
-//     const founduser = (req.session.user._id);
-   
-//     res.redirect(. , )
-// });
+router.post('/year',async (req, res) => {
+  const year = req.body.year || 2024;
+  const months = ["January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December"];
+  const founduserid = (req.session.user._id);
+  const founduser = await User.findById(founduserid);
+  const E = founduser.events
+  
 
-router.get('/year', (req, res) => {
+
+  res.render('calendar/year.ejs', 
+      {calendar: calendar(year),
+      months,
+      year,
+      founduserid,
+      E,
+      
+  });
+});
+
+router.get('/year',async (req, res) => {
     const year = req.body.year || 2024;
     const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];
-    const founduser = (req.session.user._id);
-   
+    const founduserid = (req.session.user._id);
+    const founduser = await User.findById(founduserid);
+    const E = founduser.events
+    
+
+
     res.render('calendar/year.ejs', 
         {calendar: calendar(year),
         months,
         year,
-        founduser,
+        founduserid,
+        E,
+        
     });
 });
 
@@ -33,11 +49,16 @@ router.get('/year', (req, res) => {
 
 router.get('/:year/:month/:day', async (req, res) => {
     const founduser = await User.findById(req.session.user._id);
-    // console.log(founduser.events[0].starttime)
     let list=[];
+    let listMinute=[]
     const E = founduser.events;
-    E.forEach(e=>list.push(Number(e.starttime.replace(`'`,'').split(':')[0])))
-    console.log(E)
+    E.forEach(e=>{
+      const H =Number(e.starttime.replace(`'`,'').split(':')[0])
+      const M =Number(e.starttime.replace(`'`,'').split(':')[1])
+      list.push(H);
+      listMinute.push(M);
+    })
+    console.log(list+'/////// '+listMinute)
     const { year,month, day } = req.params;
     res.render('calendar/day.ejs', { year, month, day ,list, E });
 });
